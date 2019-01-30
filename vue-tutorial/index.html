@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tutorial Vue.JS</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <input type="text" v-model="text" v-on:keyup.enter="addTodo()">
+        <ul>
+            <li v-for="item in list">
+                <span> {{item.text}} </span>
+                <button v-on:click="removeTodo($index)">x</button>
+            </li>
+        </ul>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                text: '',
+                title: 'To-Do List',
+                list: [{text: 'Primeira coisa a se fazer'}]
+            },
+            methods: {
+                addTodo() {
+                    this.list.push({ text: this.text })
+                },
+                removeTodo (index) {
+                this.list.splice(index, 1)
+            }
+        }
+    });
+    </script>  
+</body>
+</html>
